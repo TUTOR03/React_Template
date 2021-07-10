@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "module": "es2020",
+    "target": "es2020",
+    "moduleResolution": "node",
     "strict": true,
     "sourceMap": true,
     "esModuleInterop": true,
@@ -9,10 +11,11 @@
     "jsx": "react-jsx",
     "lib": ["DOM"],
     "allowJs": true,
-    "module": "ES2020",
     "paths": {
       "@utils/*": ["./src/utils/*"],
       "@components/*": ["./src/components/*"]
-    },
-  }
+    }
+  },
+  "include": ["./src/**/*", "./types"],
+  "exclude": ["node_modules"]
 }

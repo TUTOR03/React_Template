@@ -4,14 +4,15 @@ module.exports = {
   plugins: [
     '@snowpack/plugin-typescript',
     '@snowpack/plugin-react-refresh',
-    '@snowpack/plugin-dotenv'
+    '@snowpack/plugin-dotenv',
+    'snowpack-plugin-svgr',
   ],
   packageOptions: {
     polyfillNode: true,
   },
   mount: {
-    "public": {url: "/", static: true, resolve: false},
-    "src": {url: "/build"}
+    public: { url: '/', static: true },
+    src: { url: '/build' },
   },
   optimize: {
     bundle: true,
