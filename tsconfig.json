@@ -1,21 +1,23 @@
 {
+  "include": ["src", "types"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
-    "module": "es2020",
-    "target": "es2020",
+    "module": "ES2020",
+    "target": "ES2020",
     "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["./src/components/*"]
+    },
+    "noEmit": true,
     "strict": true,
     "sourceMap": true,
-    "esModuleInterop": true,
     "skipLibCheck": true,
+    "types": ["mocha", "snowpack-env"],
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
-    "lib": ["DOM"],
-    "allowJs": true,
-    "paths": {
-      "@utils/*": ["./src/utils/*"],
-      "@components/*": ["./src/components/*"]
-    }
-  },
-  "include": ["./src/**/*", "./types"],
-  "exclude": ["node_modules"]
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "importsNotUsedAsValues": "error"
+  }
 }

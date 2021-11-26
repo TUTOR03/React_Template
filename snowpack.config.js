@@ -1,27 +1,28 @@
 const path = require('path')
 
 module.exports = {
-  plugins: [
-    '@snowpack/plugin-typescript',
-    '@snowpack/plugin-react-refresh',
-    '@snowpack/plugin-dotenv',
-    'snowpack-plugin-svgr',
-  ],
-  packageOptions: {
-    polyfillNode: true,
-  },
   mount: {
     public: { url: '/', static: true },
-    src: { url: '/build' },
+    src: { url: '/dist' },
   },
+  plugins: [
+    '@snowpack/plugin-react-refresh',
+    '@snowpack/plugin-dotenv',
+    [
+      '@snowpack/plugin-typescript',
+      {
+        ...(process.versions.pnp ? { tsc: 'yarn pnpify tsc' } : {}),
+      },
+    ],
+  ],
   optimize: {
     bundle: true,
   },
   devOptions: {
     open: 'none',
+    port: 3000,
   },
   alias: {
-    '@utils': path.join(__dirname, 'src/utils'),
     '@components': path.join(__dirname, 'src/components'),
   },
   exclude: ['**/node_modules/**/*', '**/*.test.*'],
